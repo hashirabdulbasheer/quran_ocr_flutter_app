@@ -33,10 +33,13 @@ class QAResultsScreen extends StatelessWidget {
                 } else {
                   List<String> ocrTextList = snapshot.data as List<String>;
                   if (ocrTextList.isNotEmpty) {
-                    List<NQWord> searchResult = qrWords
-                        .where((element) =>
-                            ocrTextList[0].similarityTo(QRUtils.normalise(element.ar)) > 0.5)
-                        .toList();
+                    List<NQWord> searchResult = [];
+                    for (String detected in ocrTextList) {
+                      searchResult.addAll(qrWords
+                          .where((element) =>
+                              detected.similarityTo(QRUtils.normalise(element.ar)) > 0.5)
+                          .toList());
+                    }
                     searchResult = QRUtils.removeDuplicates(searchResult);
                     return ListView.builder(
                       itemCount: searchResult.length,

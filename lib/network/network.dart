@@ -6,7 +6,7 @@ import 'package:http_parser/http_parser.dart';
 class QRNetwork {
 
   /// TODO: Replace with the url of the backend server
-  static const String url = "http://192.168.0.102:5000/ocr";
+  static const String url = "http://192.168.0.103:5000/ocr";
 
   /// Send the image to backend to perform OCR and determine the text in it
   static Future<List<String>> getText(String filePath) async {
