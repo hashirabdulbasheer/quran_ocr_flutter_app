@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:noble_quran/models/word.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:quran_ocr_app/models/qrword_model.dart';
 
 class QRUtils {
-  static List<NQWord> removeDuplicates(List<NQWord> words) {
-    List<NQWord> result = [];
+  static List<QRWord> removeDuplicates(List<QRWord> words) {
+    List<QRWord> result = [];
     result.addAll(words
-        .where((a) => result.every((b) => a.ar != b.ar)));
+        .where((a) => result.every((b) => a.word.ar != b.word.ar)));
     return result;
   }
 
